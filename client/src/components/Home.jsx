@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +8,7 @@ function Home() {
   const [loading, Setloading] = useState(false);
   const [error, Seterror] = useState("");
   const [newTodos, SetnewTodos] = useState("");
+  const [isDarkMode, setisDarkMode] = useState(false);
   const navigateTo = useNavigate();
 
   useEffect(() => {
@@ -95,8 +97,22 @@ function Home() {
     }
   };
 
+  const ChangeTheme = () => {
+    setisDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="container mt-5">
+    <div
+      className="container mt-5"
+      style={{
+        backgroundColor: isDarkMode ? "black" : "white",
+        color: isDarkMode ? "white" : "black",
+        height: "100vh",
+      }}
+    >
+      <button type="button" onClick={ChangeTheme} className="btn btn-success">
+        ChangeBG
+      </button>
       <h1 className="text-center mb-4">Todo App</h1>
 
       {error && <div className="alert alert-danger">{error}</div>}
