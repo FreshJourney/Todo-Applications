@@ -8,8 +8,10 @@ const todoRoute = require("./routes/todo.route");
 const RouteUser = require("./routes/user.route");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+//const { rateLimiterUsingThirdParty } = require("./middleware/rateLimiter");
 
 app.use(express.json());
+//app.use("/todo", rateLimiterUsingThirdParty);
 app.use(cookieParser());
 app.use(
   cors({
